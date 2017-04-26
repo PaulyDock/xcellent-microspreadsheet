@@ -1,4 +1,6 @@
-const { getRange } = require('../array-util');
+const { getRange,
+        getLetterRange
+      } = require('../array-util');
 
 describe('array-util', () => {
 
@@ -13,6 +15,20 @@ describe('array-util', () => {
 
     it('produces a valid negative range', () => {
       expect(getRange(-10, -7)).toEqual([-10, -9, -8, -7]);
+    });
+  });
+
+  describe('getLetterRange()', () => {
+    it('produces a valid single letter range', () => {
+      expect(getLetterRange('Q', 1)).toEqual(['Q']);
+    });
+  
+    it('produces a valid letter range from A to F', () => {
+      expect(getLetterRange('A', 6)).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+    });
+
+    it('produces a valid letter range from B to G', () => {
+      expect(getLetterRange('B', 6)).toEqual(['B', 'C', 'D', 'E', 'F', 'G']);
     });
   });
 
