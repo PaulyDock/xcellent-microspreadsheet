@@ -9,22 +9,28 @@ describe('dom-util', () => {
   describe('DOM creation functions', () => {
     describe('createTH', () => {
       it('produces valid TH element', () => {
-        const el = createTH();
+        let text = 'Header text';
+        const el = createTH(text);
         expect(el.tagName).toBe('TH');
+        expect(el.textContent).toEqual(text);
       });
     });
 
     describe('createTR', () => {
       it('produces valid TR element', () => {
-        const el = createTR();
+        let text = 'Row text';
+        const el = createTR(text);
         expect(el.tagName).toBe('TR');
+        expect(el.textContent).toEqual(text);
       });
     });
 
     describe('createTD', () => {
       it('produces valid TD element', () => {
-        const el = createTD();
+        let text = 'Table D text';
+        const el = createTD(text);
         expect(el.tagName).toBe('TD');
+        expect(el.textContent).toEqual(text);
       });
     });
   });
