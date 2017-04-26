@@ -3,6 +3,6 @@ const getRange = function(fromNum, toNum) {
     (unused, i) => i + fromNum);
 };
 
-module.exports - {
+module.exports = {
   getRange: getRange
 };
