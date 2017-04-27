@@ -27,7 +27,7 @@ describe('dom-util', () => {
 
     describe('createTD', () => {
       it('produces valid TD element', () => {
-        let text = 'Table D text';
+        let text = 'Cell text';
         const el = createTD(text);
         expect(el.tagName).toBe('TD');
         expect(el.textContent).toEqual(text);
