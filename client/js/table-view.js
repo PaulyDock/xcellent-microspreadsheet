@@ -80,10 +80,6 @@ class TableView {
     this.formulaBarEl.addEventListener('keyup', this.handleFormulaBarChange.bind(this));
   }
 
-  isColumnHeaderRow(row) {
-    return row < 1;
-  }
-
   handleFormulaBarChange(evt) {
     const value = this.formulaBarEl.value;
     this.model.setValue(this.currentCellLocation, value);
@@ -94,14 +90,10 @@ class TableView {
     const col = evt.target.cellIndex;
     const row = evt.target.parentElement.rowIndex - 1;
 
-    if (!this.isColumnHeaderRow(row)) {
-      this.currentCellLocation = { col: col, row: row };
-      this.renderTableBody();
-    }
-
+    this.currentCellLocation = { col: col, row: row };
+    this.renderTableBody();
     this.renderFormulaBar();
   }
-
 
 };
 
