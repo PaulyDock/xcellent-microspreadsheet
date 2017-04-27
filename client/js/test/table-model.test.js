@@ -1,4 +1,4 @@
-const { TableModel } = require('../table-model');
+const TableModel = require('../table-model');
 
 describe('table-model', () => {
 

@@ -17,6 +17,4 @@ class TableModel {
   }
 }
 
-module.exports = {
-  TableModel: TableModel
-};
+module.exports = TableModel;
