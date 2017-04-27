@@ -35,7 +35,7 @@ describe('dom-util', () => {
     });
   });
 
-  describe('removeChildrean()', () => {
+  describe('removeChildren()', () => {
     it('removes one child', () => {
       // set up initial state
       const parent = document.createElement('DIV');
@@ -54,5 +54,4 @@ describe('dom-util', () => {
     });
   });
 
-  describe
 });
