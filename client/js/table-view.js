@@ -1,5 +1,5 @@
 const { getLetterRange } = require('./array-util');
-const { removeChildren, createTH } = require('.dom-util');
+const { removeChildren, createTH } = require('./dom-util');
 
 class TableView {
   constructor(model) {
@@ -21,11 +21,10 @@ class TableView {
 
   renderTableHeader() {
     removeChildren(this.headerRowEl);
-    // get letters and build elements
     getLetterRange('A', this.model.numCols)
-      .map(colLabel) => createTH(colLabel)
+      .map(colLabel => createTH(colLabel))
       .forEach(th => this.headerRowEl.appendChild(th));
   }
-}
+};
 
 module.exports = TableView;
