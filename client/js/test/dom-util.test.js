@@ -5,14 +5,18 @@ const { createTH,
       } = require('../dom-util');
 
 describe('dom-util', () => {
-  
+
   describe('DOM creation functions', () => {
     describe('createTH', () => {
       it('produces valid TH element', () => {
-        let text = 'Header text';
         const el = createTH(text);
         expect(el.tagName).toBe('TH');
-        expect(el.textContent).toEqual(text);
+      });
+
+      it('sets the text of the TH', () => {
+        const text = 'Header text';
+        const el = createTH(text);
+        expect(el.textContent).toEqual(text);        
       });
     });
 
