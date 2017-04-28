@@ -85,7 +85,7 @@ class TableView {
       //const value = 
       const td = createTD(value);
     }
-  }
+  }*/
 
   createColArray(col) {
     let colValues = [];
@@ -93,8 +93,8 @@ class TableView {
       const position = {col: col, row: row};
       colValues.push(this.model.getValue(position));
     }
-    return specialProduct(colValues);
-  }*/
+    return colValues;
+  }
 
   attachEventHandlers() {
     this.sheetBodyEl.addEventListener('click', this.handleSheetClick.bind(this));
