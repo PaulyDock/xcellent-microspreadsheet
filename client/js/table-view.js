@@ -3,6 +3,7 @@ const { removeChildren,
         createTH,
         createTR,
         createTD } = require('./dom-util');
+const specialProduct = require('./specialProduct');
 
 class TableView {
   constructor(model) {
@@ -40,6 +41,7 @@ class TableView {
   renderTable() {
     this.renderTableHeader();
     this.renderTableBody();
+    this.renderTableSumRow();
   }
 
   renderTableHeader() {
@@ -73,6 +75,25 @@ class TableView {
     }
     removeChildren(this.sheetBodyEl);
     this.sheetBodyEl.appendChild(fragment);
+  }
+
+  renderTableSumRow() {
+    const fragment = document.createDocumentFragment();
+    const row = this.model.numRows;
+    for (let col = 0; col < this.model.numCols; col++) {
+      const position = {col: col, row: row};
+      //const value = 
+      const td = createTD(value);
+    }
+  }
+
+  createColArray(col) {
+    let colValues = [];
+    for (let row = 0; row < this.model.numCols; row++) {
+      const position = {col: col, row: row};
+      colValues.push(this.model.getValue(position));
+    }
+    return specialProduct(colValues);
   }
 
   attachEventHandlers() {
