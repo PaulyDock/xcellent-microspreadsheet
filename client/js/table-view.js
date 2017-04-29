@@ -3,6 +3,7 @@ const { removeChildren,
         createTH,
         createTR,
         createTD } = require('./dom-util');
+const sumArrayNumsOnly = require('./sumarraynumsonly');
 
 class TableView {
   constructor(model) {
@@ -20,6 +21,7 @@ class TableView {
     this.headerRowEl = document.querySelector('THEAD TR');
     this.sheetBodyEl = document.querySelector('TBODY');
     this.formulaBarEl = document.querySelector('#formula-bar');
+    this.sumRowEl = document.querySelector('#sum-row');
   }
 
   initCurrentCell() {
@@ -73,6 +75,26 @@ class TableView {
     }
     removeChildren(this.sheetBodyEl);
     this.sheetBodyEl.appendChild(fragment);
+    this.renderTableSumRow();
+  }
+
+  renderTableSumRow() {
+    const fragment = document.createDocumentFragment();
+    const tr = createTR();
+    tr.className = 'sum-row';
+    for (let col = 0; col < this.model.numCols; col++) {
+      const colValues = [];
+      
+      for (let row = 0; row < this.model.numRows; row++) {
+        let summingPosition = {col: col, row: row};
+        colValues.push(this.model.getValue(summingPosition));
+      }
+      
+      const td = createTD(sumArrayNumsOnly(colValues));
+      tr.appendChild(td);
+    }
+    fragment.appendChild(tr);
+    this.sheetBodyEl.appendChild(fragment);
   }
 
   attachEventHandlers() {
@@ -90,9 +112,11 @@ class TableView {
     const col = evt.target.cellIndex;
     const row = evt.target.parentElement.rowIndex - 1;
 
-    this.currentCellLocation = { col: col, row: row };
-    this.renderTableBody();
-    this.renderFormulaBar();
+    if (row < this.model.numRows) {
+      this.currentCellLocation = { col: col, row: row };
+      this.renderTableBody();
+      this.renderFormulaBar();
+    }
   }
 
 };
