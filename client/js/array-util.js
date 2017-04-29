@@ -8,9 +8,9 @@ const getLetterRange = function(firstLetter='A', numLetters) {
   const rangeEnd = rangeStart + numLetters - 1;
   return getRange(rangeStart, rangeEnd)
     .map(charCode => String.fromCharCode(charCode));
-}
+};
 
 module.exports = {
   getRange: getRange,
   getLetterRange: getLetterRange
-}
+};
