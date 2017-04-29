@@ -6,7 +6,8 @@
   "scripts": {
     "build": "mkdirp public/js && browserify client/js/app.js > public/js/bundle.js",
     "watch": "watchify client/js/app.js -o public/js/bundle.js",
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "author": "Paul Dockery <paul.david.dockery@gmail.com>",
   "license": "MIT",
