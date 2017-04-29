@@ -11,6 +11,53 @@ describe('table-view', () => {
     document.documentElement.innerHTML = html;
   });
 
+  describe('sum row', () => {
+    it('creates a row at the proper location', () => {
+      // set up the initial state
+      const numCols = 3;
+      const numRows = 5;
+      const model = new TableModel(numCols, numRows);
+      const view = new TableView(model);
+      view.init();
+
+      // inspect the initial state
+      let trs = document.querySelectorAll('TBODY TR');
+      expect(trs.length).toBe(numRows + 1);
+    });
+
+    it('displays column sum in sum row', () => {
+      // set up the initial state
+      const numCols = 3;
+      const numRows = 5;
+      const model = new TableModel(numCols, numRows);
+      const view = new TableView(model);
+      view.init();
+
+      // inspect the initial state
+      let trs = document.querySelectorAll('TBODY TR');
+      expect(trs[numRows].cells[0].textContent).toBe('');
+
+      // simulate user action
+      let td = trs[0].cells[0];
+      document.querySelector('#formula-bar').value = '45';
+      view.handleFormulaBarChange();
+
+      // inspect the resulting state
+      trs = document.querySelectorAll('TBODY TR');
+      expect(trs[numRows].cells[0].textContent).toBe('45');
+
+      // simulate user action
+      td = trs[1].cells[0];
+      td.click();
+      document.querySelector('#formula-bar').value = '60';
+      view.handleFormulaBarChange();
+
+      // inspect the resulting state
+      trs = document.querySelectorAll('TBODY TR');
+      expect(trs[numRows].cells[0].textContent).toBe('105');
+    });
+  });
+
   describe('formula bar', () => {
     it('updates TO the value of the current cell', () => {
       // set up the initial state
@@ -91,7 +138,7 @@ describe('table-view', () => {
       // set up the initial state
       const model = new TableModel(3, 3);
       const view = new TableView(model);
-      model.setValue({col: 2, row: 1}, '123');;
+      model.setValue({col: 2, row: 1}, '123');
       view.init();
 
       //inspect the initial state
