@@ -86,8 +86,8 @@ class TableView {
       const colValues = [];
       
       for (let row = 0; row < this.model.numRows; row++) {
-        let summingPosition = {col: col, row: row};
-        colValues.push(this.model.getValue(summingPosition));
+        let addressOfValueToBeAdded = {col: col, row: row};
+        colValues.push(this.model.getValue(addressOfValueToBeAdded));
       }
       
       const td = createTD(sumArrayNumsOnly(colValues));
