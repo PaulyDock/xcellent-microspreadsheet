@@ -2,6 +2,9 @@
   "name": "x-cell",
   "version": "1.0.0",
   "description": "world's smallest spreadsheet",
+  "engines": {
+    "node": "6.10.2"
+  },
   "main": "index.js",
   "scripts": {
     "build": "mkdirp public/js && browserify client/js/app.js > public/js/bundle.js",
