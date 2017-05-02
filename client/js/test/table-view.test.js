@@ -11,8 +11,8 @@ describe('table-view', () => {
     document.documentElement.innerHTML = html;
   });
 
-  describe('sum row', () => {
-    it('creates a row at the proper location', () => {
+  describe('footer with sums', () => {
+    it('creates a row at the bottom of the table (footer)', () => {
       // set up the initial state
       const numCols = 3;
       const numRows = 5;
@@ -25,7 +25,7 @@ describe('table-view', () => {
       expect(trs.length).toBe(numRows + 1);
     });
 
-    it('displays column sum in sum row', () => {
+    it('displays sum of column values in sum row', () => {
       // set up the initial state
       const numCols = 3;
       const numRows = 5;
