@@ -21,7 +21,7 @@ class TableView {
     this.headerRowEl = document.querySelector('THEAD TR');
     this.sheetBodyEl = document.querySelector('TBODY');
     this.formulaBarEl = document.querySelector('#formula-bar');
-    this.sumRowEl = document.querySelector('#sum-row');
+    this.footerRowEl = document.querySelector('#footer');
   }
 
   initCurrentCell() {
@@ -75,19 +75,19 @@ class TableView {
     }
     removeChildren(this.sheetBodyEl);
     this.sheetBodyEl.appendChild(fragment);
-    this.renderTableSumRow();
+    this.renderTableFooter();
   }
 
-  renderTableSumRow() {
+  renderTableFooter() {
     const fragment = document.createDocumentFragment();
     const tr = createTR();
-    tr.className = 'sum-row';
+    tr.className = 'footer';
     for (let col = 0; col < this.model.numCols; col++) {
       const colValues = [];
       
       for (let row = 0; row < this.model.numRows; row++) {
-        let summingPosition = {col: col, row: row};
-        colValues.push(this.model.getValue(summingPosition));
+        let addressOfValueToBeAdded = {col: col, row: row};
+        colValues.push(this.model.getValue(addressOfValueToBeAdded));
       }
       
       const td = createTD(sumArrayNumsOnly(colValues));

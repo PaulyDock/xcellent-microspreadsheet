@@ -2,12 +2,16 @@
   "name": "x-cell",
   "version": "1.0.0",
   "description": "world's smallest spreadsheet",
+  "engines": {
+    "node": "6.10.2"
+  },
   "main": "index.js",
   "scripts": {
     "build": "mkdirp public/js && browserify client/js/app.js > public/js/bundle.js",
     "watch": "watchify client/js/app.js -o public/js/bundle.js",
     "test": "jest",
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "mkdir -p public/js; browserify client/js/app.js > public/js/bundle.js"
   },
   "author": "Paul Dockery <paul.david.dockery@gmail.com>",
   "license": "MIT",
